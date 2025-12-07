@@ -9,7 +9,7 @@ The system is optimized for performance and responsive across desktop and mobile
 Both frontend and backend are deployed on Render for cloud access.
 
 **Live Application:** https://truretail.onrender.com  
-**Backend API:** https://truretail-backend.onrender.com
+**Backend API:** https://truretail-backend.onrender.com/api/sales
 
 ---
 
@@ -60,4 +60,5 @@ Pagination improves performance while handling large datasets efficiently.
 4. Navigate to the **frontend** folder and install dependencies  
 5. Build and deploy the frontend on Render  
 6. Configure environment variables for API communication
+
 
