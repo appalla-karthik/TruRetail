@@ -1,33 +1,36 @@
+// frontend/src/hooks/useSales.js
 import { useEffect, useState } from "react";
 import { fetchSales } from "../services/salesApi";
 
-export const useSales = (query) => {
-  const [data, setData] = useState({
-    items: [],
-    totalItems: 0,
-    totalPages: 1,
-    currentPage: 1,
-  });
-  const [loading, setLoading] = useState(false);
+export function useSales(query) {
+  const [data, setData] = useState({ items: [], totalPages: 1 });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let ignore = false;
+    let cancelled = false;
 
-    const load = async () => {
+    async function load() {
       setLoading(true);
       try {
-        const res = await fetchSales(query);
-        if (!ignore) setData(res);
+        const result = await fetchSales(query);
+        if (!cancelled) {
+          setData(result);
+        }
       } catch (err) {
-        console.error(err);
+        console.error("Failed to load sales:", err);
+        if (!cancelled) {
+          setData({ items: [], totalPages: 1 });
+        }
       } finally {
-        if (!ignore) setLoading(false);
+        if (!cancelled) setLoading(false);
       }
-    };
+    }
 
     load();
-    return () => (ignore = true);
-  }, [query]);
+    return () => {
+      cancelled = true;
+    };
+  }, [JSON.stringify(query)]); // simple dependency
 
   return { data, loading };
-};
+}

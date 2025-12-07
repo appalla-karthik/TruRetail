@@ -1,22 +1,29 @@
-const BASE_URL = "http://localhost:4000";
+// frontend/src/services/salesApi.js
+const API_BASE =
+  import.meta.env.VITE_API_URL || "http://localhost:4000"; // fallback only for local dev
 
-export const fetchSales = async (query) => {
+export async function fetchSales(query) {
   const params = new URLSearchParams();
 
-  Object.entries(query).forEach(([key, value]) => {
-    if (value === "" || value == null) return;
-    if (Array.isArray(value) && value.length === 0) return;
+  if (query.search) params.set("search", query.search);
+  if (query.region?.length) params.set("region", query.region.join(","));
+  if (query.gender?.length) params.set("gender", query.gender.join(","));
+  if (query.productCategories?.length)
+    params.set("productCategories", query.productCategories.join(","));
 
-    if (Array.isArray(value)) {
-      params.set(key, value.join(","));
-    } else {
-      params.set(key, value);
-    }
-  });
+  params.set("page", query.page ?? 1);
+  params.set("pageSize", query.pageSize ?? 10);
+  params.set("sortBy", query.sortBy ?? "date");
+  params.set("sortOrder", query.sortOrder ?? "desc");
 
-  const res = await fetch(`${BASE_URL}/api/sales?${params.toString()}`);
+  const url = `${API_BASE}/api/sales?${params.toString()}`;
 
-  if (!res.ok) throw new Error("Failed to fetch sales");
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    console.error("API error:", res.status, res.statusText);
+    throw new Error("Failed to fetch sales");
+  }
 
   return res.json();
-};
+}
