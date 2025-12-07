@@ -58,3 +58,6 @@ coverage/
 # RENDER DEPLOY
 # ======================================
 .render
+# Ignore large datasets
+backend/src/data/*.csv
+backend/src/data/*.json
