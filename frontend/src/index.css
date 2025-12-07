@@ -1,0 +1,387 @@
+/* =========================================================
+   GLOBAL RESET & BASE
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Helvetica Neue", sans-serif;
+  background-color: #f4f6f8;
+  color: #111827;
+}
+
+body {
+  margin: 0;
+}
+
+/* Root must never be centered or constrained */
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================================
+   APP LAYOUT
+   ========================================================= */
+.app-root {
+  min-height: 100vh;
+  width: 100%;
+  background: #f4f6f8;
+  padding: 16px;
+}
+
+.app-shell {
+  width: 100%;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+  margin-bottom: 16px;
+}
+
+.app-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* =========================================================
+   SEARCH BAR
+   ========================================================= */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-form input {
+  width: 280px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  background: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-form input::placeholder {
+  color: #9ca3af;
+}
+
+.search-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.search-form button {
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #111827;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.05s;
+}
+
+.search-form button:hover {
+  background: #000000;
+}
+
+.search-form button:active {
+  transform: translateY(1px);
+}
+
+/* =========================================================
+   FILTER + SORT BAR
+   ========================================================= */
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 14px 20px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+/* Filter labels */
+.controls-bar strong {
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+/* Filter pills */
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  font-size: 13px;
+  margin-right: 8px;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.filter-pill:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.filter-pill input {
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+/* Clear filters button */
+button.clear-filters {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button.clear-filters:hover {
+  background: #000000;
+}
+
+/* =========================================================
+   SORT DROPDOWN
+   ========================================================= */
+select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* =========================================================
+   SUMMARY CARDS
+   ========================================================= */
+.summary-section {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.summary-card {
+  flex: 1;
+  min-width: 220px;
+  background: #111827;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.summary-card h4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.summary-card p {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+.table-section {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f9fafb;
+}
+
+th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 14px 16px;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+td {
+  font-size: 13px;
+  padding: 14px 16px;
+  color: #111827;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Empty state */
+.no-results {
+  padding: 20px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+.pagination-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 16px;
+}
+.pagination-info {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #374151;
+}
+.filter-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-group strong {
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 8px;
+  color: #374151;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #111827;
+  color: #ffffff;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 1024px) {
+  .search-form input {
+    width: 220px;
+  }
+}
+
+@media (max-width: 900px) {
+  .controls-bar {
+    flex-direction: column;
+  }
+
+  .summary-section {
+    flex-direction: column;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+
+  .search-form input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pagination-wrapper {
+    justify-content: center;
+  }
+}
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-control label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
