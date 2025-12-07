@@ -11,7 +11,7 @@ export const getAllSalesData = () => {
     process.cwd(),
     "src",
     "data",
-    "sales-data.csv"
+  "sales-data-demo.csv"
   );
 
   if (!fs.existsSync(filePath)) {
