@@ -310,6 +310,47 @@ tbody tr:hover {
   margin-right: 8px;
   color: #374151;
 }
+/* =========================
+   CSV UPLOAD BUTTON
+   ========================= */
+.csv-upload-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #111827;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s, transform 0.1s;
+  user-select: none;
+}
+
+.upload-btn:hover {
+  background: #000;
+}
+
+.upload-btn:active {
+  transform: scale(0.98);
+}
+
+.upload-btn.loading {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.upload-status {
+  font-size: 12px;
+  color: #2563eb;
+}
 
 .pagination {
   display: flex;

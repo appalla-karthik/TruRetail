@@ -3,7 +3,6 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import salesRouter from "./routes/sales.routes.js";
-
 dotenv.config();
 
 const app = express();
@@ -14,7 +13,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/sales", salesRouter);
-
+// uploadRoutes removed
 // Health check route
 app.get("/health", (req, res) => {
   res.json({ status: "ok" });

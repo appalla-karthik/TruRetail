@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 import csv from "csv-parser";
-
 const data = [];
+
 
 export const getAllSalesData = () => {
   if (data.length > 0) return data;

@@ -1,6 +1,7 @@
 // src/App.jsx
 import { useState } from "react";
 import { useSales } from "./hooks/useSales";
+// import CsvUpload removed
 
 import SearchBar from "./components/SearchBar";
 import FilterBar from "./components/FilterBar";
@@ -47,6 +48,7 @@ function App() {
               Track sales, customers, and performance at scale
             </p>
           </div>
+          {/* CsvUpload removed */}
 
           <div className="header-right">
             <SearchBar query={query} setQuery={setQuery} />
